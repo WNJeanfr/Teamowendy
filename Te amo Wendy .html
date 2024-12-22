@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Aniversario, Wendy!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffe6f2;
+            color: #ff5e78;
+            text-align: center;
+            overflow: hidden;
+        }
+        h1, h2 {
+            color: #ff2e63;
+        }
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .button {
+            background-color: #ff85a1;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 25px;
+            color: white;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background-color: #ff5e78;
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            max-width: 80%;
+            font-size: 18px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .heart {
+            font-size: 50px;
+            animation: beat 1s infinite;
+        }
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .hearts div {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff5e78;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+            }
+            100% {
+                transform: translateY(-100px) translateX(calc(-100px + 200%));
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="music" loop>
+        <source src="always_forever_cult.mp3" type="audio/mpeg">
+        Tu navegador no soporta el audio.
+    </audio>
+
+    <div class="hearts">
+        <!-- Corazones animados -->
+        <div style="left: 10%; animation-duration: 6s;"></div>
+        <div style="left: 30%; animation-duration: 8s;"></div>
+        <div style="left: 50%; animation-duration: 5s;"></div>
+        <div style="left: 70%; animation-duration: 7s;"></div>
+        <div style="left: 90%; animation-duration: 9s;"></div>
+    </div>
+
+    <!-- Contenido inicial -->
+    <div class="container" id="initial-content">
+        <h1>¿Quieres pasar este día conmigo?</h1>
+        <button class="button" onclick="accept()">Sí</button>
+        <button class="button" onclick="forceYes()">No</button>
+    </div>
+
+    <!-- Mensaje principal -->
+    <div class="container hidden" id="main-content">
+        <h2>¡Feliz 3 meses conmigo, mi niña hermosa!</h2>
+        <p class="message">
+            Hoy celebramos tres meses de este hermoso camino que estamos recorriendo juntos. A pesar de que hemos tenido problemas y no hemos sido perfectos, hemos demostrado que nuestros corazones y sueños pueden superar cualquier obstáculo que se ponga en nuestra relación y también unirse para crear algo único y mágico.
+        </p>
+        <p class="message">
+            Gracias por enseñarme tanto, por apoyarme y por permitirme ser yo mismo a tu lado. Cada día contigo es un regalo, y no puedo esperar por todos los momentos que nos quedan por vivir.
+        </p>
+        <p class="message">
+            Eres mi mayor alegría, mi inspiración y mi hogar, sin importar dónde estemos. Te amo más de lo que las palabras pueden expresar, y prometo seguir cuidando este amor con todo mi corazón.
+        </p>
+        <p class="message">
+            <strong>TE AMO MUCHO WENDY, TE AMO MI AMOR ❤️</strong>
+        </p>
+        <div class="heart">❤️</div>
+    </div>
+
+    <script>
+        // Lógica para manejar las opciones
+        let noCounter = 0;
+
+        function accept() {
+            document.getElementById('initial-content').classList.add('hidden');
+            document.getElementById('main-content').classList.remove('hidden');
+            document.getElementById('music').play();
+        }
+
+        function forceYes() {
+            if (noCounter === 0) {
+                alert("¿Estás segura de esto?");
+            } else if (noCounter === 1) {
+                alert("JA no te dejaré escoger no");
+            } else {
+                alert("¡No puedes decir que no!");
+            }
+            noCounter++;
+        }
+    </script>
+</body>
+</html>
